@@ -1,15 +1,17 @@
 {%set name = "girder" %}
-{%set version = "1.5.2" %}
+{%set version = "1.6.0" %}
+{%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "549b4047ba0e31965347662da8f1bf8907b8d4e467d8b331f4be6f2c319ee6f9" %}
+{%set hash_val = "1852d22ceb4a9607369ad5744a0370cad273398270c282b2d8eac6a28fd5b8f2" %}
+{%set build_num = "0" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  fn: {{ name }}-{{ version }}.{{ compress_type }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
@@ -17,7 +19,7 @@ build:
     - girder-server = girder.__main__:main
     - girder-install = girder.utility.install:main
 
-  number: 0
+  number: {{ build_num }}
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -27,8 +29,6 @@ requirements:
 
   run:
     - python
-    - pip
-    - setuptools
     - bcrypt
     - boto
     - cherrypy
@@ -37,11 +37,17 @@ requirements:
     - pyyaml
     - requests
     - psutil
+    - python-dateutil
     - pytz
     - six >=1.9
     - celery
     - geojson
     - pillow
+    - pydicom
+    - numpy
+    - pyjwt
+    - cryptography
+    - shutilwhich  # [not py3k]
     - snakebite  # [not py3k]
     - hachoir-core  # [not py3k]
     - hachoir-metadata  # [not py3k]
@@ -61,9 +67,13 @@ test:
     - girder-install --help
 
 about:
-  home: https://girder.readthedocs.org
+  home: https://github.com/girder/girder
   license: Apache 2.0
+  license_file: LICENSE
+  license_family: Apache
   summary: 'Web-based data management platform'
+  dev_url: https://github.com/girder/girder
+  doc_url: https://girder.readthedocs.org
 
 extra:
   recipe-maintainers:
