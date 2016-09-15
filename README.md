@@ -1,7 +1,7 @@
 About girder
 ============
 
-Home: https://girder.readthedocs.org
+Home: https://github.com/girder/girder
 
 Package license: Apache 2.0
 
@@ -70,7 +70,7 @@ Terminology
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/girder-feedstock.svg?style=svg)](https://circleci.com/gh/conda-forge/girder-feedstock)
+Linux: [![Circle CI](https://circleci.com/gh/conda-forge/girder-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/girder-feedstock)
 OSX: [![TravisCI](https://travis-ci.org/conda-forge/girder-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/girder-feedstock)
 Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/girder-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/girder-feedstock/branch/master)
 
@@ -83,12 +83,17 @@ Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/girder/bad
 Updating girder-feedstock
 =========================
 
-If you would like to improve the girder recipe, please take the normal
-route of forking this repository and submitting a PR. Upon submission, your changes will
-be run on the appropriate platforms to give the reviewer an opportunity to confirm that the
-changes result in a successful build. Once merged, the recipe will be re-built and uploaded
-automatically to the conda-forge channel, whereupon they will be available for everybody to
-install and use.
+If you would like to improve the girder recipe or build a new
+package version, please fork this repository and submit a PR. Upon submission,
+your changes will be run on the appropriate platforms to give the reviewer an
+opportunity to confirm that the changes result in a successful build. Once
+merged, the recipe will be re-built and uploaded automatically to the
+`conda-forge` channel, whereupon the built conda packages will be available for
+everybody to install and use from the `conda-forge` channel.
+Note that all branches in the conda-forge/girder-feedstock are
+immediately built and any created packages are uploaded, so PRs should be based
+on branches in forks and branches in the main repository should only be used to
+build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
  * If the version of a package **is not** being increased, please add or increase
