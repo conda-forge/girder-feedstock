@@ -47,7 +47,7 @@ requirements:
     - numpy
     - pyjwt
     - cryptography
-    - shutilwhich  # [not py3k]
+    - shutilwhich  # [py<33]
     - snakebite  # [not py3k]
     - hachoir-core  # [not py3k]
     - hachoir-metadata  # [not py3k]
