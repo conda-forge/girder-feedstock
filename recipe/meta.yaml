@@ -52,6 +52,7 @@ requirements:
     - hachoir-core  # [not py3k]
     - hachoir-metadata  # [not py3k]
     - hachoir-parser  # [not py3k]
+    - pip
 
 test:
   imports:
