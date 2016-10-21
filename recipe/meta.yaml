@@ -1,8 +1,8 @@
 {%set name = "girder" %}
-{%set version = "1.6.0" %}
+{%set version = "2.0.0" %}
 {%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "1852d22ceb4a9607369ad5744a0370cad273398270c282b2d8eac6a28fd5b8f2" %}
+{%set hash_val = "e23f6ae1a28dc93585aabe6312367376e53615687911e73ec8005a858e95cef1" %}
 {%set build_num = "0" %}
 
 package:
@@ -31,7 +31,7 @@ requirements:
     - python
     - bcrypt
     - boto
-    - cherrypy
+    - cherrypy <8
     - mako
     - pymongo >=3
     - pyyaml
@@ -52,6 +52,7 @@ requirements:
     - hachoir-core  # [not py3k]
     - hachoir-metadata  # [not py3k]
     - hachoir-parser  # [not py3k]
+    - paramiko
     - pip
 
 test:
