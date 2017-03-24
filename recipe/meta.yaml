@@ -1,8 +1,8 @@
 {%set name = "girder" %}
-{%set version = "2.1.1" %}
+{%set version = "2.2.0" %}
 {%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "d3764d186aadcb9a1f39a1655d4460944f764eef2d5a16fb03211d2fecff4b10" %}
+{%set hash_val = "21500c1df62b6e419e348749ec2bca006cc77bc2dacd17c8a75587caf641c12b" %}
 {%set build_num = "0" %}
 
 package:
@@ -42,12 +42,11 @@ requirements:
     - pytz
     - six >=1.9
     - celery
-    - geojson
-    - pillow
     - pydicom
+    - geojson
+    - ctk-cli
+    - pillow
     - numpy
-    - pyjwt
-    - cryptography
     - shutilwhich  # [py2k]
     - snakebite  # [py2k]
     - hachoir-core  # [py2k]
@@ -74,7 +73,7 @@ about:
   license: Apache 2.0
   license_file: LICENSE
   license_family: Apache
-  summary: 'Web-based data management platform'
+  summary: Web-based data management platform
   dev_url: https://github.com/girder/girder
   doc_url: https://girder.readthedocs.org
 
