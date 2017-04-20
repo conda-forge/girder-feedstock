@@ -1,8 +1,8 @@
 {%set name = "girder" %}
-{%set version = "2.0.0" %}
+{%set version = "2.2.0" %}
 {%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "e23f6ae1a28dc93585aabe6312367376e53615687911e73ec8005a858e95cef1" %}
+{%set hash_val = "21500c1df62b6e419e348749ec2bca006cc77bc2dacd17c8a75587caf641c12b" %}
 {%set build_num = "0" %}
 
 package:
@@ -18,6 +18,7 @@ build:
   entry_points:
     - girder-server = girder.__main__:main
     - girder-install = girder.utility.install:main
+    - girder-sftpd = girder.api.sftp:_main
 
   number: {{ build_num }}
   script: python setup.py install --single-version-externally-managed --record=record.txt
@@ -41,17 +42,16 @@ requirements:
     - pytz
     - six >=1.9
     - celery
-    - geojson
-    - pillow
     - pydicom
+    - geojson
+    - ctk-cli
+    - pillow
     - numpy
-    - pyjwt
-    - cryptography
-    - shutilwhich  # [py<33]
-    - snakebite  # [not py3k]
-    - hachoir-core  # [not py3k]
-    - hachoir-metadata  # [not py3k]
-    - hachoir-parser  # [not py3k]
+    - shutilwhich  # [py2k]
+    - snakebite  # [py2k]
+    - hachoir-core  # [py2k]
+    - hachoir-metadata  # [py2k]
+    - hachoir-parser  # [py2k]
     - paramiko
     - pip
 
@@ -73,7 +73,7 @@ about:
   license: Apache 2.0
   license_file: LICENSE
   license_family: Apache
-  summary: 'Web-based data management platform'
+  summary: Web-based data management platform
   dev_url: https://github.com/girder/girder
   doc_url: https://girder.readthedocs.org
 
