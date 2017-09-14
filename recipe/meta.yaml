@@ -1,17 +1,17 @@
-{%set name = "girder" %}
-{%set version = "2.2.0" %}
-{%set compress_type = "tar.gz" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "21500c1df62b6e419e348749ec2bca006cc77bc2dacd17c8a75587caf641c12b" %}
-{%set build_num = "0" %}
+{% set name = "girder" %}
+{% set version = "2.3.0" %}
+{% set bundle = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash = "f54bf4d2c96f0ed6a1822d8d5484775486179da48e746979bda6ff7fa4c122b3" %}
+{% set build = 0 %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
+  fn: {{ name }}-{{ version }}.{{ bundle }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
@@ -19,8 +19,9 @@ build:
     - girder-server = girder.__main__:main
     - girder-install = girder.utility.install:main
     - girder-sftpd = girder.api.sftp:_main
+    - girder-shell = girder.utility.shell:main
 
-  number: {{ build_num }}
+  number: {{ build }}
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
@@ -31,8 +32,11 @@ requirements:
   run:
     - python
     - bcrypt
-    - boto
-    - cherrypy <8
+    - boto3
+    - cherrypy
+    - click
+    - filelock
+    - jsonschema
     - mako
     - pymongo >=3
     - pyyaml
@@ -41,10 +45,11 @@ requirements:
     - python-dateutil
     - pytz
     - six >=1.9
-    - celery
+    - celery >=4.0.0
     - pydicom
     - geojson
     - ctk-cli
+    - pyldap
     - pillow
     - numpy
     - shutilwhich  # [py2k]
@@ -52,21 +57,29 @@ requirements:
     - hachoir-core  # [py2k]
     - hachoir-metadata  # [py2k]
     - hachoir-parser  # [py2k]
+    - funcsigs  # [py<35]
     - paramiko
     - pip
+    - curl
+    - zlib
+    - libjpeg-turbo
 
 test:
   imports:
     - girder
     - girder.api
     - girder.api.v1
+    - girder.conf
     - girder.external
+    - girder.mail_templates
     - girder.models
     - girder.utility
 
   commands:
     - girder-server --help
     - girder-install --help
+    - girder-sftpd --help
+    - girder-shell --help
 
 about:
   home: https://github.com/girder/girder
