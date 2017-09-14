@@ -76,6 +76,8 @@ test:
   commands:
     - girder-server --help
     - girder-install --help
+    - girder-sftpd --help
+    - girder-shell --help
 
 about:
   home: https://github.com/girder/girder
