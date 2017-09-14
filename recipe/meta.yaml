@@ -1,8 +1,8 @@
 {%set name = "girder" %}
-{%set version = "2.2.0" %}
+{%set version = "2.3.0" %}
 {%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "21500c1df62b6e419e348749ec2bca006cc77bc2dacd17c8a75587caf641c12b" %}
+{%set hash_val = "f54bf4d2c96f0ed6a1822d8d5484775486179da48e746979bda6ff7fa4c122b3" %}
 {%set build_num = "0" %}
 
 package:
