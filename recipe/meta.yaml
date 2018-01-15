@@ -1,8 +1,8 @@
 {% set name = "girder" %}
-{% set version = "2.3.0" %}
+{% set version = "2.4.0" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash = "f54bf4d2c96f0ed6a1822d8d5484775486179da48e746979bda6ff7fa4c122b3" %}
+{% set hash = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
 {% set build = 0 %}
 
 package:
@@ -23,6 +23,7 @@ build:
 
   number: {{ build }}
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
 
 requirements:
   build:
@@ -33,36 +34,33 @@ requirements:
     - python
     - bcrypt
     - boto3
-    - cherrypy
+    - cherrypy <11.1
     - click
     - filelock
+    - funcsigs  # [py<35]
     - jsonschema
     - mako
-    - pymongo >=3
+    - pymongo >=3.5
     - pyyaml
-    - requests
     - psutil
     - python-dateutil
     - pytz
+    - requests
+    - shutilwhich  # [py<33]
     - six >=1.9
-    - celery >=4.0.0
     - pydicom
     - geojson
     - ctk-cli
     - pyldap
     - pillow
     - numpy
-    - shutilwhich  # [py2k]
+    - celery >=4
     - snakebite  # [py2k]
     - hachoir-core  # [py2k]
     - hachoir-metadata  # [py2k]
     - hachoir-parser  # [py2k]
-    - funcsigs  # [py<35]
     - paramiko
     - pip
-    - curl
-    - zlib
-    - libjpeg-turbo
 
 test:
   imports:
