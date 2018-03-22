@@ -1,8 +1,8 @@
 {%set name = "girder" %}
-{%set version = "2.2.0" %}
+{%set version = "2.5.0" %}
 {%set compress_type = "tar.gz" %}
 {%set hash_type = "sha256" %}
-{%set hash_val = "21500c1df62b6e419e348749ec2bca006cc77bc2dacd17c8a75587caf641c12b" %}
+{%set hash_val = "d155bb5a012045d1f3cc430d2295cfb5051e6009298934791154b52ba63f2e36" %}
 {%set build_num = "0" %}
 
 package:
@@ -20,7 +20,7 @@ build:
     - girder-install = girder.utility.install:main
     - girder-sftpd = girder.api.sftp:_main
 
-  number: {{ build_num }}
+  number: 0
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
