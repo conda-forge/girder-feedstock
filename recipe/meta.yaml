@@ -1,17 +1,16 @@
-{%set name = "girder" %}
-{%set version = "2.4.0" %}
-{%set compress_type = "tar.gz" %}
-{%set hash_type = "sha256" %}
-{%set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
-{%set build_num = "0" %}
+{% set name = "girder" %}
+{% set version = "2.4.0" %}
+{% set bundle = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ compress_type }}
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ compress_type }}
+  fn: {{ name }}-{{ version }}.{{ bundle }}
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
   {{ hash_type }}: {{ hash_val }}
 
 build:
@@ -19,29 +18,33 @@ build:
     - girder-server = girder.__main__:main
     - girder-install = girder.utility.install:main
     - girder-sftpd = girder.api.sftp:_main
+    - girder-shell = girder.utility.shell:main
 
   number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
 
   run:
     - python
     - bcrypt
-    - boto
-    - cherrypy <8
+    - boto3
+    - cherrypy
+    - click
+    - filelock
+    - jsonschema
     - mako
-    - pymongo >=3
+    - pymongo
     - pyyaml
     - requests
     - psutil
     - python-dateutil
     - pytz
     - six >=1.9
-    - celery
+    - celery >=4.0.0
     - pydicom
     - geojson
     - ctk-cli
