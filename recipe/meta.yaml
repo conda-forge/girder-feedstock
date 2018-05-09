@@ -1,11 +1,11 @@
 {% set name = "girder" %}
-{% set version = "2.4.0" %}
+{% set version = "2.5.0" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
+{% set hash_val = "d155bb5a012045d1f3cc430d2295cfb5051e6009298934791154b52ba63f2e36" %}
 
 package:
-  name: {{ name }}
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
@@ -15,11 +15,11 @@ source:
 
 build:
   entry_points:
-    - girder-server = girder.__main__:main
+    - girder-server = girder.cli.serve:main
     - girder-install = girder.utility.install:main
-    - girder-sftpd = girder.api.sftp:_main
-    - girder-shell = girder.utility.shell:main
-
+    - girder-sftpd = girder.cli.sftpd:main
+    - girder-shell = girder.cli.shell:main
+    - girder = girder.cli:main
   number: 0
   script: python -m pip install --no-deps --ignore-installed .
 
@@ -32,29 +32,40 @@ requirements:
     - python
     - bcrypt
     - boto3
-    - cherrypy
+    - cherrypy <11.1
     - click
+    - click-plugins
+    - dogpile.cache
     - filelock
+    - funcsigs  # [py2k]
     - jsonschema
     - mako
-    - pymongo
+    - pymongo >=3.5
     - pyyaml
-    - requests
     - psutil
-    - python-dateutil
+    - python-dateutil <2.7
     - pytz
-    - six >=1.9
-    - celery >=4.0.0
-    - pydicom
-    - geojson
-    - ctk-cli
-    - pillow
-    - numpy
+    - requests
     - shutilwhich  # [py2k]
+    - six >=1.9
+    
+    # plugin requireiments
+    - celery >=4
+    - pydicom >=1.0.2
+    - fusepy >=2.0.4
+    - geojson
     - snakebite  # [py2k]
+    - ctk-cli
+    - girder-worker-utils >=0.7.2
+    - girder-worker >=0.4.0
+    - pyldap
     - hachoir-core  # [py2k]
     - hachoir-metadata  # [py2k]
     - hachoir-parser  # [py2k]
+    - pillow
+    - numpy
+    
+    # extra requirements
     - paramiko
     - pip
 
@@ -70,6 +81,9 @@ test:
   commands:
     - girder-server --help
     - girder-install --help
+    - girder-sftpd --help
+    - girder-shel --help
+    - girder --help
 
 about:
   home: https://github.com/girder/girder
