@@ -20,7 +20,7 @@ build:
     - girder-sftpd = girder.api.sftp:_main
     - girder-shell = girder.utility.shell:main
 
-  number: 0
+  number: 1000
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
