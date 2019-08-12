@@ -1,8 +1,8 @@
 {% set name = "girder" %}
-{% set version = "2.4.0" %}
+{% set version = "3.0.1" %}
 {% set bundle = "tar.gz" %}
 {% set hash_type = "sha256" %}
-{% set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
+{% set hash_val = "b2906387a0323db897a8b3f911fde6a42aaef66cf2ccf878f2770f354d2f592b" %}
 
 package:
   name: {{ name }}
