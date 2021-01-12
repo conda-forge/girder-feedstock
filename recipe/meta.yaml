@@ -1,7 +1,6 @@
 {% set name = "girder" %}
 {% set version = "2.4.0" %}
 {% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
 {% set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
 
 package:
@@ -11,7 +10,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.{{ bundle }}
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash_val }}
+  sha256: {{ hash_val }}
 
 build:
   entry_points:
@@ -20,11 +19,11 @@ build:
     - girder-sftpd = girder.api.sftp:_main
     - girder-shell = girder.utility.shell:main
 
-  number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  number: 1
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
-  build:
+  host:
     - python
     - pip
 
