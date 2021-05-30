@@ -11,10 +11,10 @@ source:
 
 build:
   entry_points:
-    - girder-server = girder.__main__:main
-    - girder-install = girder.utility.install:main
-    - girder-sftpd = girder.api.sftp:_main
-    - girder-shell = girder.utility.shell:main
+    - girder-server = girder.cli.serve:main
+    - girder = girder.cli:main
+    - girder-sftpd = girder.cli.sftpd:main
+    - girder-shell = girder.cli.shell:main
   noarch: python
   number: 0
   script: {{ PYTHON }} -m pip install . -vv
