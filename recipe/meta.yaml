@@ -48,6 +48,7 @@ requirements:
     - pillow
     - numpy
     - paramiko
+    - passlib
     - pip
     - dogpile.cache
 
