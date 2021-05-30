@@ -1,39 +1,36 @@
 {% set name = "girder" %}
-{% set version = "2.4.0" %}
-{% set bundle = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash_val = "447c46bafeca5a8713df17a4165b9122c4e6d3309625107296dbb9bacd3df150" %}
+{% set version = "3.0.3" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.{{ bundle }}
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ bundle }}
-  {{ hash_type }}: {{ hash_val }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8ac38d291be341b7851794d10d65c3b9be6cd61702a10506deddabad7066640a
 
 build:
   entry_points:
-    - girder-server = girder.__main__:main
-    - girder-install = girder.utility.install:main
-    - girder-sftpd = girder.api.sftp:_main
-    - girder-shell = girder.utility.shell:main
-
+    - girder-server = girder.cli.serve:main
+    - girder = girder.cli:main
+    - girder-sftpd = girder.cli.sftpd:main
+    - girder-shell = girder.cli.shell:main
+  noarch: python
   number: 0
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.6
     - pip
+    - setuptools_scm
 
   run:
-    - python
+    - python >=3.6
     - bcrypt
     - boto3
-    - cherrypy
-    - click
+    - cherrypy <11.1
+    - click >=7.0,<8.0
     - filelock
     - jsonschema
     - mako
@@ -50,13 +47,10 @@ requirements:
     - ctk-cli
     - pillow
     - numpy
-    - shutilwhich  # [py2k]
-    - snakebite  # [py2k]
-    - hachoir-core  # [py2k]
-    - hachoir-metadata  # [py2k]
-    - hachoir-parser  # [py2k]
     - paramiko
+    - passlib
     - pip
+    - dogpile.cache
 
 test:
   imports:
@@ -69,11 +63,17 @@ test:
 
   commands:
     - girder-server --help
-    - girder-install --help
+    - girder --help
+    - girder-sftpd --help
+    - girder-shell --help
+    - pip check
+  
+  requires:
+    - pip
 
 about:
   home: https://github.com/girder/girder
-  license: Apache 2.0
+  license: Apache-2.0
   license_file: LICENSE
   license_family: Apache
   summary: Web-based data management platform
@@ -83,3 +83,4 @@ about:
 extra:
   recipe-maintainers:
     - pmlandwehr
+    - jan-janssen
