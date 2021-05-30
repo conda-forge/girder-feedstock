@@ -29,8 +29,8 @@ requirements:
     - python >=3.6
     - bcrypt
     - boto3
-    - cherrypy
-    - click
+    - cherrypy <11.1
+    - click >=7.0,<8.0
     - filelock
     - jsonschema
     - mako
