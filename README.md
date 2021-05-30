@@ -3,7 +3,7 @@ About girder
 
 Home: https://github.com/girder/girder
 
-Package license: Apache 2.0
+Package license: Apache-2.0
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/girder-feedstock/blob/master/LICENSE.txt)
 
