@@ -20,16 +20,16 @@ build:
     - girder-sftpd = girder.api.sftp:_main
     - girder-shell = girder.utility.shell:main
 
-  number: 0
+  number: 1
   script: python -m pip install --no-deps --ignore-installed .
 
 requirements:
   build:
-    - python
+    - python >=3.6
     - pip
 
   run:
-    - python
+    - python >=3.6
     - bcrypt
     - boto3
     - cherrypy
@@ -83,3 +83,4 @@ about:
 extra:
   recipe-maintainers:
     - pmlandwehr
+    - jan-janssen
