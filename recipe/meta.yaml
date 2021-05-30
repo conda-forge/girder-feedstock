@@ -49,6 +49,7 @@ requirements:
     - numpy
     - paramiko
     - pip
+    - dogpile.cache
 
 test:
   imports:
