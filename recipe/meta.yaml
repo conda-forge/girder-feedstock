@@ -62,7 +62,9 @@ test:
 
   commands:
     - girder-server --help
-    - girder-install --help
+    - girder --help
+    - girder-sftpd --help
+    - girder-shell --help
     - pip check
   
   requires:
