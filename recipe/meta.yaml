@@ -19,7 +19,7 @@ build:
     - girder-install = girder.utility.install:main
     - girder-sftpd = girder.api.sftp:_main
     - girder-shell = girder.utility.shell:main
-
+  noarch: python
   number: 1
   script: python -m pip install --no-deps --ignore-installed .
 
@@ -50,11 +50,6 @@ requirements:
     - ctk-cli
     - pillow
     - numpy
-    - shutilwhich  # [py2k]
-    - snakebite  # [py2k]
-    - hachoir-core  # [py2k]
-    - hachoir-metadata  # [py2k]
-    - hachoir-parser  # [py2k]
     - paramiko
     - pip
 
