@@ -57,7 +57,6 @@ test:
     - girder
     - girder.api
     - girder.api.v1
-    - girder.external
     - girder.models
     - girder.utility
 
