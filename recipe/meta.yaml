@@ -21,12 +21,12 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.8
     - pip
     - setuptools_scm
 
   run:
-    - python >=3.6
+    - python >=3.8
     - bcrypt
     - boto3
     - cherrypy <11.1
