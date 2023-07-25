@@ -36,6 +36,7 @@ requirements:
     - filelock
     - jsonschema
     - mako
+    - paramiko
     - passlib
     - pymongo >=3.6,<4
     - pyyaml
