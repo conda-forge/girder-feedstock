@@ -27,30 +27,23 @@ requirements:
 
   run:
     - python >=3.8
-    - bcrypt
     - boto3
-    - cherrypy <11.1
-    - click >=7.0,<8.0
+    - botocore
+    - cherrypy
+    - click
+    - click-plugins
+    - dogpile.cache
     - filelock
     - jsonschema
     - mako
-    - pymongo
+    - passlib
+    - pymongo >=3.6,<4
     - pyyaml
-    - requests
     - psutil
+    - pyopenssl
     - python-dateutil
     - pytz
-    - six >=1.9
-    - celery >=4.0.0
-    - pydicom
-    - geojson
-    - ctk-cli
-    - pillow
-    - numpy
-    - paramiko
-    - passlib
-    - pip
-    - dogpile.cache
+    - requests
 
 test:
   imports:
