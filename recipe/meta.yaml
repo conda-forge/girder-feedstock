@@ -1,5 +1,5 @@
 {% set name = "girder" %}
-{% set version = "3.2.3" %}
+{% set version = "3.2.4" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6f1d31c26237bc5b6f4010692248231c7c9a4d2a75701ec761a41d6e75de8fcb
+  sha256: d1b18284020a94f9d210d73a06e9cf0103bde4a4c7f6517a3f601315f8d2fa69
 
 build:
   entry_points:
@@ -24,7 +24,7 @@ requirements:
     - python >=3.8
     - pip
     - setuptools_scm
-
+    - setuptools
   run:
     - python >=3.8
     - boto3
@@ -38,7 +38,7 @@ requirements:
     - mako
     - paramiko
     - passlib
-    - pymongo >=3.6,<4
+    - pymongo >=4
     - pyyaml
     - psutil
     - pyopenssl
