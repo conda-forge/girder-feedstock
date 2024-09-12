@@ -24,7 +24,7 @@ requirements:
     - python >=3.8
     - pip
     - setuptools_scm
-
+    - setuptools
   run:
     - python >=3.8
     - boto3
