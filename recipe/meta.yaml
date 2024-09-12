@@ -38,7 +38,7 @@ requirements:
     - mako
     - paramiko
     - passlib
-    - pymongo >=3.6,<4
+    - pymongo >=4
     - pyyaml
     - psutil
     - pyopenssl
