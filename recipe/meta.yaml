@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 22d1dd4d5741328036c3032d2aa609f6a735343950437bf24aefaef72c92e2af
 
 build:
@@ -16,17 +16,17 @@ build:
     - girder-sftpd = girder.cli.sftpd:main
     - girder-shell = girder.cli.shell:main
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - pip
     - setuptools_scm
     - setuptools
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - boto3
     - botocore
     - cherrypy
@@ -63,6 +63,7 @@ test:
 
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/girder/girder
