@@ -1,5 +1,5 @@
 {% set name = "girder" %}
-{% set version = "3.2.6" %}
+{% set version = "3.2.7" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 22d1dd4d5741328036c3032d2aa609f6a735343950437bf24aefaef72c92e2af
+  sha256: 301238cb3fcc9c1982bda1ac0a6a49f6796f3a5d4a0c8e1c80a8c71b2041b02b
 
 build:
   entry_points:
@@ -16,7 +16,7 @@ build:
     - girder-sftpd = girder.cli.sftpd:main
     - girder-shell = girder.cli.shell:main
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
