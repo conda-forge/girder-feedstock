@@ -1,5 +1,5 @@
 {% set name = "girder" %}
-{% set version = "3.2.7" %}
+{% set version = "3.2.8" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 301238cb3fcc9c1982bda1ac0a6a49f6796f3a5d4a0c8e1c80a8c71b2041b02b
+  sha256: 4121e2190e3402f4bbdcd770064002782f0fea2762dae3669dfccb725ded18cb
 
 build:
   entry_points:
