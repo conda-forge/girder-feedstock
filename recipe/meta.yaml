@@ -1,5 +1,5 @@
 {% set name = "girder" %}
-{% set version = "3.2.8" %}
+{% set version = "3.2.9" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4121e2190e3402f4bbdcd770064002782f0fea2762dae3669dfccb725ded18cb
+  sha256: b93a56956bafb2ed78768112966cd7e12330a981a55e303c4ecb421a608eafc5
 
 build:
   entry_points:
@@ -36,6 +36,7 @@ requirements:
     - filelock
     - jsonschema
     - mako
+    - packaging
     - paramiko
     - passlib
     - pymongo >=4
