@@ -36,6 +36,7 @@ requirements:
     - filelock
     - jsonschema
     - mako
+    - packaging
     - paramiko
     - passlib
     - pymongo >=4
