@@ -46,6 +46,7 @@ requirements:
     - python-dateutil
     - pytz
     - requests
+    - pyotp
 
 test:
   imports:
