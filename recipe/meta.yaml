@@ -30,6 +30,7 @@ requirements:
     - boto3
     - botocore
     - cherrypy
+    - cheroot <11
     - click
     - click-plugins
     - dogpile.cache
