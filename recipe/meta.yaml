@@ -69,6 +69,7 @@ test:
     - python {{ python_min }}
     - uvicorn
     - redis-py
+    - starlette
 
 about:
   home: https://github.com/girder/girder
