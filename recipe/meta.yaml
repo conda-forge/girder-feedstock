@@ -1,5 +1,5 @@
 {% set name = "girder" %}
-{% set version = "3.2.13" %}
+{% set version = "5.0.0" %}
 
 package:
   name: {{ name }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0728f7ea3f94900208d3f6d68722f19241ce434ef3cad6e295dec7470e18a985
+  sha256: 4f6704c52418cb381b82b8d4380fcf6a71153667b20fa5220bc3564cc09b412c
 
 build:
   entry_points:
@@ -48,6 +48,11 @@ requirements:
     - pytz
     - requests
     - pyotp
+    - uvicorn
+    - redis-py
+    - starlette
+    - websockets
+    - girder-worker
 
 test:
   imports:
