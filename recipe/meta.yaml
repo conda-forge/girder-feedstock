@@ -68,7 +68,7 @@ test:
     - pip
     - python {{ python_min }}
     - uvicorn
-    - redis
+    - redis-py
 
 about:
   home: https://github.com/girder/girder
