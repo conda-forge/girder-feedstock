@@ -48,6 +48,10 @@ requirements:
     - pytz
     - requests
     - pyotp
+    - uvicorn
+    - redis-py
+    - starlette
+    - websockets
 
 test:
   imports:
@@ -67,9 +71,6 @@ test:
   requires:
     - pip
     - python {{ python_min }}
-    - uvicorn
-    - redis-py
-    - starlette
 
 about:
   home: https://github.com/girder/girder
