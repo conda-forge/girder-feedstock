@@ -67,6 +67,7 @@ test:
   requires:
     - pip
     - python {{ python_min }}
+    - uvicorn
 
 about:
   home: https://github.com/girder/girder
