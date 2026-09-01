@@ -1,0 +1,94 @@
+schema_version: 1
+
+context:
+  name: girder
+  version: "5.0.17"
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://files.pythonhosted.org/packages/source/${{ name[0] }}/${{ name }}/${{ name }}-${{ version }}.tar.gz
+  sha256: 639a31301a514473c24810d9fd945cfdc01b61d1add1c1565dd07becc2ace90f
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - girder-server = girder.cli.serve:main
+      - girder = girder.cli:main
+      - girder-sftpd = girder.cli.sftpd:main
+      - girder-shell = girder.cli.shell:main
+
+requirements:
+  host:
+    - python ${{ python_min }}
+    - pip
+    - setuptools_scm
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+    - boto3
+    - botocore
+    - cherrypy
+    - cheroot <11
+    - click
+    - click-plugins
+    - dogpile.cache
+    - filelock
+    - jsonschema
+    - mako
+    - packaging
+    - paramiko
+    - passlib
+    - pymongo >=4
+    - pyyaml
+    - psutil
+    - pyopenssl
+    - python-dateutil
+    - pytz
+    - requests
+    - pyotp
+    - uvicorn
+    - redis-py
+    - starlette
+    - websockets
+    - girder-worker
+
+tests:
+  - python:
+      imports:
+        - girder
+        - girder.api
+        - girder.api.v1
+        - girder.models
+        - girder.utility
+      pip_check: true
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - pip
+        - python ${{ python_min }}
+    script:
+      - girder-server --help
+      - girder --help
+      - girder-sftpd --help
+      - girder-shell --help
+
+about:
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Web-based data management platform
+  homepage: https://github.com/girder/girder
+  repository: https://github.com/girder/girder
+  documentation: https://girder.readthedocs.org
+
+extra:
+  recipe-maintainers:
+    - pmlandwehr
+    - jan-janssen
