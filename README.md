@@ -11,7 +11,7 @@ Summary: Web-based data management platform
 
 Development: https://github.com/girder/girder
 
-Documentation: https://girder.readthedocs.org
+Documentation: https://girder.readthedocs.org/
 
 Current build status
 ====================
